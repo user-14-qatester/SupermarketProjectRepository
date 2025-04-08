@@ -36,33 +36,40 @@ public WebDriver driver;
 
 
 
-public void clickOnNewButtonOfManageNewsPage()
+public ManageNewsPage clickOnNewButtonOfManageNewsPage()
 {
 	newButtonManageNewsPage.click();
+	return this;
 }
-public void addNews(String news)
+public ManageNewsPage addNews(String news)
 {
 	newsEntryArea.sendKeys(news);
+	return this;
 }
-public void clickOnSaveButton()
+public ManageNewsPage clickOnSaveButton()
 {
 	saveButtonAddNewsPage.click();
+	return this;
 }
-public void clickOnSearchButtonManageNews()
+public ManageNewsPage clickOnSearchButtonManageNews()
 {
 	searchButtonManageNews.click();
+	return this;
 }
-public void enterNewsToSearch(String newsSearch)
+public ManageNewsPage enterNewsToSearch(String newsSearch)
 {
 	titleField.sendKeys(newsSearch);
+	return this;
 }
-public void clickOnSearchButtonSearchNews()
+public ManageNewsPage clickOnSearchButtonSearchNews()
 {
 	searchUserButtonSeachNews.click();
+	return this;
 }
-public void isAlertDisplayed()
+public ManageNewsPage isAlertDisplayed()
 {
 	wait.waitUntilAlertIsPresent(driver, addNewsSuccessAlert);
+	return this;
 }
 public boolean isSuccessAlertDisplayed()
 {

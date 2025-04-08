@@ -22,8 +22,8 @@ public class SubCategoryTest extends Base {
 		String usernamevalue = ExcelUtility.getStringdata(0, 0, "LoginPageData");
 		String passwordvalue = ExcelUtility.getStringdata(0, 1, "LoginPageData");
 		LoginPage login = new LoginPage(driver);
-		homepage=login.enterUsername(usernamevalue).enterPassword(passwordvalue).clickOnSignInButton();
-		 
+		login.enterUsername(usernamevalue).enterPassword(passwordvalue);
+		homepage=login.clickOnSignInButton();
 		subcategory=homepage.clickOnSubcategoryHomeButton();
 		subcategory.clickOnNewButton().selectCategoryDropDown();
 		String subcategoryValue = ExcelUtility.getStringdata(3, 0, "VegetablesSubcategories");
@@ -32,13 +32,13 @@ public class SubCategoryTest extends Base {
 		Assert.assertTrue(isCloseButtonOfAlertDisplayed, "User was not able to add a new subcategory");
 	}
 
-	@Test(description = "Verify whether user is able to perform search on the subcategory page", priority = 2)
+	@Test(description = "Verify whether user is able to perform search on the subcategory page", priority = 2,retryAnalyzer=retry.Retry.class)
 	public void verifyWhetherUserIsAbleToPerformSearchOnTheSubCategoryPage() throws IOException {
 		String usernamevalue = ExcelUtility.getStringdata(0, 0, "LoginPageData");
 		String passwordvalue = ExcelUtility.getStringdata(0, 1, "LoginPageData");
 		LoginPage login = new LoginPage(driver);
-		homepage=login.enterUsername(usernamevalue).enterPassword(passwordvalue).clickOnSignInButton();
-	
+		login.enterUsername(usernamevalue).enterPassword(passwordvalue);
+		homepage=login.clickOnSignInButton();
 		subcategory=homepage.clickOnSubcategoryHomeButton();
 		subcategory.clickOnSearchButton().selectCategoryDropDownSearchPage();
 		String subcategoryValueOfSearchPage = ExcelUtility.getStringdata(1, 0, "VegetablesSubcategories");

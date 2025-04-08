@@ -5,9 +5,14 @@
 <listeners><listener class-name="listener.Listeners"></listener></listeners>
   <test thread-count="5" name="Test">
     <classes>
+    
      
+     <class name="testscripts.LoginTest"></class>
+      <class name="testscripts.HomeTest"></class>  
       <class name="testscripts.SubCategoryTest"></class>
-      
+     <class name="testscripts.ManageUsersTest"></class>    
+     <class name="testscripts.ManageNewsTest"></class>
+     
      
     </classes>
   </test> <!-- Test -->

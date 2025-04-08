@@ -8,11 +8,14 @@ import org.testng.annotations.Test;
 
 import automationCore.Base;
 import constants.Messages;
+import pages.HomePage;
 import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class LoginTest extends Base
 {
+	
+	HomePage homepage;
 	
 	@Test(description="Verify whether user is able to successfully login with valid credentials",priority=4,retryAnalyzer=retry.Retry.class)
 	public void verifyWhetherUserIsAbleToLoginWithValidCredentials() throws IOException
@@ -20,7 +23,8 @@ public class LoginTest extends Base
 		String usernamevalue=ExcelUtility.getStringdata(0, 0, "LoginPageData");
 		String passwordvalue=ExcelUtility.getStringdata(0, 1, "LoginPageData");
 		LoginPage testlogin=new LoginPage(driver);
-		testlogin.enterUsername(usernamevalue).enterPassword(passwordvalue).clickOnSignInButton();
+		testlogin.enterUsername(usernamevalue).enterPassword(passwordvalue);
+		homepage=testlogin.clickOnSignInButton();
 		boolean isDashboardDisplayed=testlogin.isDashboardDisplayed();
 		Assert.assertTrue(isDashboardDisplayed,Messages.VALIDCREDENTIALERROR);
 	}
@@ -31,7 +35,8 @@ public class LoginTest extends Base
 		String usernamevalue=ExcelUtility.getStringdata(1, 0, "LoginPageData");
 		String passwordvalue=ExcelUtility.getStringdata(1, 1, "LoginPageData");
 		LoginPage testlogin=new LoginPage(driver);
-		testlogin.enterUsername(usernamevalue).enterPassword(passwordvalue).clickOnSignInButton();
+		testlogin.enterUsername(usernamevalue).enterPassword(passwordvalue);
+		homepage=testlogin.clickOnSignInButton();
 		boolean isErrorAlertDisplayed=testlogin.isErrorAlertDisplayed();
 		Assert.assertTrue(isErrorAlertDisplayed, "User is able to login with valid username and invalid password");
 	}
@@ -42,7 +47,8 @@ public class LoginTest extends Base
 		String usernamevalue=ExcelUtility.getStringdata(2, 0, "LoginPageData");
 		String passwordvalue=ExcelUtility.getStringdata(2, 1, "LoginPageData");
 		LoginPage testlogin=new LoginPage(driver);
-		testlogin.enterUsername(usernamevalue).enterPassword(passwordvalue).clickOnSignInButton();
+		testlogin.enterUsername(usernamevalue).enterPassword(passwordvalue);
+		homepage=testlogin.clickOnSignInButton();
 		boolean isErrorAlertDisplayed=testlogin.isErrorAlertDisplayed();
 		Assert.assertTrue(isErrorAlertDisplayed, "User is able to login with invalid username and valid password");
 	}
@@ -52,7 +58,8 @@ public class LoginTest extends Base
 	{
 		
 		LoginPage testlogin=new LoginPage(driver);
-		testlogin.enterUsername(usernamevalue).enterPassword(passwordvalue).clickOnSignInButton();
+		testlogin.enterUsername(usernamevalue).enterPassword(passwordvalue);
+		homepage=testlogin.clickOnSignInButton();
 		boolean isErrorAlertDisplayed=testlogin.isErrorAlertDisplayed();
 		Assert.assertTrue(isErrorAlertDisplayed, "User is able to login with invalid username and invalid password");
 	}

@@ -21,35 +21,32 @@ public class ManageUsersTest extends Base {
 		String usernamevalue = ExcelUtility.getStringdata(0, 0, "LoginPageData");
 		String passwordvalue = ExcelUtility.getStringdata(0, 1, "LoginPageData");
 		LoginPage login = new LoginPage(driver);
-		homepage=login.enterUsername(usernamevalue).enterPassword(passwordvalue).clickOnSignInButton();
-		manageusers=homepage.clickOnAdminUsersNavigationLink().clickOnManageUsersRadioButton();
+		login.enterUsername(usernamevalue).enterPassword(passwordvalue);
+		homepage=login.clickOnSignInButton();
+		homepage.clickOnAdminUsersNavigationLink();
+		manageusers=homepage.clickOnManageUsersRadioButton();
 		manageusers.clickOnNewButtonOfManageUsersPage();
 		RandomDataUtility random=new RandomDataUtility();
 		String userNameFieldValue = random.createRandomUsername();
 		String passwordFieldValue = random.createRandomPassword();
-		manageusers.enterValueOnUsernameFieldofManageUsersPage(userNameFieldValue);
-		manageusers.enterValueOnPasswordFieldofManageUsersPage(passwordFieldValue);
-		manageusers.selectUserType();
-		manageusers.clickOnSaveButtonManageUsersPage();
+		manageusers.enterValueOnUsernameFieldofManageUsersPage(userNameFieldValue).enterValueOnPasswordFieldofManageUsersPage(passwordFieldValue).selectUserType().clickOnSaveButtonManageUsersPage();
 		boolean isAlertCloseButtonDisplayed = manageusers.isAlertCloseButtonDisplayed();
 		Assert.assertTrue(isAlertCloseButtonDisplayed, "User was unable to add a new user");
 
 	}
 
-	@Test(description = "Verify whether user is able to navigate to Manage Users page and search for a user", priority = 2)
+	@Test(description = "Verify whether user is able to navigate to Manage Users page and search for a user", priority = 2,retryAnalyzer=retry.Retry.class)
 	public void verifyWhetherUserIsAbleToNavigateToManageUsersPageAndSearchForAUser() throws IOException {
 		String usernamevalue = ExcelUtility.getStringdata(0, 0, "LoginPageData");
 		String passwordvalue = ExcelUtility.getStringdata(0, 1, "LoginPageData");
 		LoginPage login = new LoginPage(driver);
-		homepage=login.enterUsername(usernamevalue).enterPassword(passwordvalue).clickOnSignInButton();
-		
-
-		manageusers=homepage.clickOnAdminUsersNavigationLink().clickOnManageUsersRadioButton();
+		login.enterUsername(usernamevalue).enterPassword(passwordvalue);
+		homepage=login.clickOnSignInButton();
+		homepage.clickOnAdminUsersNavigationLink();
+		manageusers=homepage.clickOnManageUsersRadioButton();
 		manageusers.clickOnSearchButtonOfManageUsersPage();
 		String usernameValue = ExcelUtility.getStringdata(0, 0, "ManageUsersSearchUser");
-		manageusers.enterValueOnUsernameFieldToSearchAUser(usernameValue);
-		manageusers.selectUserTypeToSearchAUser();
-		manageusers.clickOnSearchUserButton();
+		manageusers.enterValueOnUsernameFieldToSearchAUser(usernameValue).selectUserTypeToSearchAUser().clickOnSearchUserButton();
 		boolean isAdminUsersHeaderDisplayed = manageusers.isAdminUsersHeaderDisplayed();
 		Assert.assertTrue(isAdminUsersHeaderDisplayed, "Results not displayed on searching for a user");
 	}
@@ -59,9 +56,10 @@ public class ManageUsersTest extends Base {
 		String usernamevalue = ExcelUtility.getStringdata(0, 0, "LoginPageData");
 		String passwordvalue = ExcelUtility.getStringdata(0, 1, "LoginPageData");
 		LoginPage login = new LoginPage(driver);
-		homepage=login.enterUsername(usernamevalue).enterPassword(passwordvalue).clickOnSignInButton();
-
-		manageusers=homepage.clickOnAdminUsersNavigationLink().clickOnManageUsersRadioButton();
+		login.enterUsername(usernamevalue).enterPassword(passwordvalue);
+		homepage=login.clickOnSignInButton();
+		homepage.clickOnAdminUsersNavigationLink();
+		manageusers=homepage.clickOnManageUsersRadioButton();
 		manageusers.clickOnSearchButtonOfManageUsersPage();
 		String usernameValue = ExcelUtility.getStringdata(0, 0, "ManageUsersSearchUser");
 		manageusers.enterValueOnUsernameFieldToSearchAUser(usernameValue).selectUserTypeToSearchAUser().clickOnSearchUserButton().scrollManageUsersPage().clickOnResetButton();
