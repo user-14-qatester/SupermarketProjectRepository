@@ -5,8 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
-
+import utilities.PageUtility;
 import utilities.WaitUtility;
 
 public class ManageUsersPage {
@@ -66,8 +65,8 @@ public class ManageUsersPage {
 
 	public ManageUsersPage selectUserType() {
 		
-		Select select = new Select(userTypeDropdown);
-		select.selectByIndex(3);
+		PageUtility pageutility=new PageUtility();
+		pageutility.selectDropdownWithIndex(userTypeDropdown, 3);
 		return this;
 		
 	}
@@ -89,9 +88,9 @@ public class ManageUsersPage {
 	}
 
 	public ManageUsersPage selectUserTypeToSearchAUser() {
-		Select select = new Select(userTypeSearchUser);
 		
-		select.selectByIndex(2);
+		PageUtility pageutility=new PageUtility();
+		pageutility.selectDropdownWithIndex(userTypeSearchUser, 2);
 		return this;
 	}
 

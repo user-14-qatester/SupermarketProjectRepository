@@ -38,7 +38,7 @@ public class LoginTest extends Base
 		testlogin.enterUsername(usernamevalue).enterPassword(passwordvalue);
 		homepage=testlogin.clickOnSignInButton();
 		boolean isErrorAlertDisplayed=testlogin.isErrorAlertDisplayed();
-		Assert.assertTrue(isErrorAlertDisplayed, "User is able to login with valid username and invalid password");
+		Assert.assertTrue(isErrorAlertDisplayed, Messages.VALIDUSERNAMEINVALIDPASSWORDERROR);
 	}
 	
 	@Test(description="Verify whether user is able to login with invalid username and valid password",priority=3,groups={"smoke"})
@@ -50,7 +50,7 @@ public class LoginTest extends Base
 		testlogin.enterUsername(usernamevalue).enterPassword(passwordvalue);
 		homepage=testlogin.clickOnSignInButton();
 		boolean isErrorAlertDisplayed=testlogin.isErrorAlertDisplayed();
-		Assert.assertTrue(isErrorAlertDisplayed, "User is able to login with invalid username and valid password");
+		Assert.assertTrue(isErrorAlertDisplayed, Messages.INVALIDUSERNAMEVALIDPASSWORDERROR);
 	}
 	
 	@Test(description="Verify whether user is able to login with invalid credentials",priority=1,dataProvider="loginProvider")
@@ -61,7 +61,7 @@ public class LoginTest extends Base
 		testlogin.enterUsername(usernamevalue).enterPassword(passwordvalue);
 		homepage=testlogin.clickOnSignInButton();
 		boolean isErrorAlertDisplayed=testlogin.isErrorAlertDisplayed();
-		Assert.assertTrue(isErrorAlertDisplayed, "User is able to login with invalid username and invalid password");
+		Assert.assertTrue(isErrorAlertDisplayed, Messages.INVALIDCREDENTIALSERROR);
 	}
 	@DataProvider(name="loginProvider")
 

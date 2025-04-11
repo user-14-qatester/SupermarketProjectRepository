@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
+import constants.Messages;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.SubCategoryPage;
@@ -29,7 +30,7 @@ public class SubCategoryTest extends Base {
 		String subcategoryValue = ExcelUtility.getStringdata(3, 0, "VegetablesSubcategories");
 		subcategory.enterValueOnSubCategoryField(subcategoryValue).chooseFileUsingRobotClass().clickSaveButton();
 		boolean isCloseButtonOfAlertDisplayed = subcategory.isAlertDisplayedOnAddingANewSubcategory();
-		Assert.assertTrue(isCloseButtonOfAlertDisplayed, "User was not able to add a new subcategory");
+		Assert.assertTrue(isCloseButtonOfAlertDisplayed, Messages.ADDANEWSUBCATEGORYERROR);
 	}
 
 	@Test(description = "Verify whether user is able to perform search on the subcategory page", priority = 2,retryAnalyzer=retry.Retry.class)
@@ -44,7 +45,7 @@ public class SubCategoryTest extends Base {
 		String subcategoryValueOfSearchPage = ExcelUtility.getStringdata(1, 0, "VegetablesSubcategories");
 		subcategory.enterValueOnSubCategoryFieldOfSearchPage(subcategoryValueOfSearchPage).clickOnSearchButtonOfSubCategorySearchPage();
 		boolean isListSubcategoriesHeaderDisplayed = subcategory.isListSubcategoriesHeaderDisplayedOnSearchingASubcategory();
-		Assert.assertTrue(isListSubcategoriesHeaderDisplayed,"Search results not displayed on searching for a subcategory");
+		Assert.assertTrue(isListSubcategoriesHeaderDisplayed,Messages.SEARCHFORASUBCATEGORYERROR);
 	}
 
 }

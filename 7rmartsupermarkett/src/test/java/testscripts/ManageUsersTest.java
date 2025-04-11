@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
+import constants.Messages;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.ManageUsersPage;
@@ -31,7 +32,7 @@ public class ManageUsersTest extends Base {
 		String passwordFieldValue = random.createRandomPassword();
 		manageusers.enterValueOnUsernameFieldofManageUsersPage(userNameFieldValue).enterValueOnPasswordFieldofManageUsersPage(passwordFieldValue).selectUserType().clickOnSaveButtonManageUsersPage();
 		boolean isAlertCloseButtonDisplayed = manageusers.isAlertCloseButtonDisplayed();
-		Assert.assertTrue(isAlertCloseButtonDisplayed, "User was unable to add a new user");
+		Assert.assertTrue(isAlertCloseButtonDisplayed, Messages.ADDANEWUSERERROR);
 
 	}
 
@@ -48,7 +49,7 @@ public class ManageUsersTest extends Base {
 		String usernameValue = ExcelUtility.getStringdata(0, 0, "ManageUsersSearchUser");
 		manageusers.enterValueOnUsernameFieldToSearchAUser(usernameValue).selectUserTypeToSearchAUser().clickOnSearchUserButton();
 		boolean isAdminUsersHeaderDisplayed = manageusers.isAdminUsersHeaderDisplayed();
-		Assert.assertTrue(isAdminUsersHeaderDisplayed, "Results not displayed on searching for a user");
+		Assert.assertTrue(isAdminUsersHeaderDisplayed, Messages.SEARCHFORAUSERERROR);
 	}
 
 	@Test(description = "Verify whether user is able to navigate to Manage Users page and perform a reset", priority = 3)
@@ -64,6 +65,6 @@ public class ManageUsersTest extends Base {
 		String usernameValue = ExcelUtility.getStringdata(0, 0, "ManageUsersSearchUser");
 		manageusers.enterValueOnUsernameFieldToSearchAUser(usernameValue).selectUserTypeToSearchAUser().clickOnSearchUserButton().scrollManageUsersPage().clickOnResetButton();
 		boolean isSearchUsersHeaderDisplayed = manageusers.isSearchUsersHeaderDisplayed();
-		Assert.assertFalse(isSearchUsersHeaderDisplayed, "User was not able to reset search users page");
+		Assert.assertFalse(isSearchUsersHeaderDisplayed, Messages.RESETERROR);
 	}
 }

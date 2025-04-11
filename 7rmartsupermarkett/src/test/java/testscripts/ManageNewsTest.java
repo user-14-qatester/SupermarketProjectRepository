@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
+import constants.Messages;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.ManageNewsPage;
@@ -28,7 +29,7 @@ public class ManageNewsTest extends Base {
 		String newsText = ExcelUtility.getStringdata(0, 0, "News");
 		managenews.addNews(newsText).clickOnSaveButton();
 		boolean isSuccessAlertDisplayed = managenews.isSuccessAlertDisplayed();
-		Assert.assertTrue(isSuccessAlertDisplayed, "User is not able to add a news from the Manage news page");
+		Assert.assertTrue(isSuccessAlertDisplayed, Messages.ADDANEWSERROR);
 	}
 
 	@Test(description = "Verify whether user is able to navigate to Manage News page and search a news", priority = 2,retryAnalyzer=retry.Retry.class)
@@ -43,7 +44,7 @@ public class ManageNewsTest extends Base {
 		String newsSearchText = ExcelUtility.getStringdata(0, 0, "SearchNews");
 		managenews.enterNewsToSearch(newsSearchText).clickOnSearchButtonSearchNews();
 		boolean isManageNewsHeaderDisplayed = managenews.isSearchResultsDisplayed();
-		Assert.assertTrue(isManageNewsHeaderDisplayed, "User is not displayed with the search results");
+		Assert.assertTrue(isManageNewsHeaderDisplayed, Messages.SEARCHFORANEWSERROR);
 
 	}
 

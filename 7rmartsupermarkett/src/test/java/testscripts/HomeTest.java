@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
+import constants.Messages;
 import pages.HomePage;
 import pages.LoginPage;
 import utilities.ExcelUtility;
@@ -26,7 +27,7 @@ public class HomeTest extends Base
 		loginpage=homepage.clickLogoutLink();
 		String actualResult=homepage.getTextFromTitle();
 		String expectedResult="7rmart supermarket";
-		Assert.assertEquals(actualResult, expectedResult, "User was unable to logout successfully");
+		Assert.assertEquals(actualResult, expectedResult, Messages.USERLOGOUTERROR);
 	}
 	
 }
